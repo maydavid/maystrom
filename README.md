@@ -1,4 +1,4 @@
-maystrom
+maystrøm
 ========
 
 open modular car radio
