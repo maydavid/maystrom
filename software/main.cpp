@@ -2,41 +2,39 @@
 maystrom 2014 
 david.may.muc@gmail.com 
 */
-
-#include "mbed.h"
-#include "platform.h"
+#include "maystrom.h"
 
 #include "hal/startup_hal.h"
-
-#include "maystrom.h"
+#include "hal/notification_hal.h"
+#include "hal/lcdmenu_hal.h"
 
 
     
 
-/*
+struct board_handle * bh;
+
 void sendStatus() {
-        ble->putc(0x00);
-        ble->putc(0x11);
-        ble->putc(rand());
+        uint8_t type=0;
+        bh->ble->putc(type);
+        bh->ble->putc(rand());
     }
-*/
+
 int main(void)
 {
     int r;
-    //Ticker statusTicker;
+    Ticker statusTicker;
     
-    /* startup */
-    struct board_handle * bh;
-
-    
+    /* startup */ 
     r = startup_board(&bh);
-    if (r>0) error("error at system startup. ERRNO: %i\n",r);
+    if (r>0) error(bh,"%s ERRNO: %i\n",__FUNCTION__,r);
     
     
     
-/*
-    statusTicker.attach(&sendStatus,1.0);
 
+    statusTicker.attach(&sendStatus,1.0);
+    
+    while (1) {}
+/*
     while (1) {
         if(ble->readable()) {
             pc.putc(ble->getc());
