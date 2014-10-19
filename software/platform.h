@@ -21,7 +21,7 @@ david.may.muc@gmail.com
 #define HAS_BLE 1
 
 /* graphic lcd */
-#define HAS_GLCD 1
+#define HAS_GLCD 0
 /* glcd resolution */
 #define GLCD_RESOLUTION "320X240"
 /* glcd type */
